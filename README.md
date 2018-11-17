@@ -17,6 +17,12 @@ why would you use any other language
   - hld
   - efficient segment tree
   - treap
+- graph
+  - dinic
+  - mcmf - dinic style
+  - hungarian
+  - tarjan
+  - 2-sat
 - string
   - aho corasick
   - kmp
