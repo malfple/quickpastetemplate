@@ -29,6 +29,9 @@ why would you use any other language
   - hungarian
   - tarjan
   - 2-sat
+- math
+  - fft & ntt
+    - includes fft + ntt + polynom multiply
 - string
   - aho corasick
   - kmp
