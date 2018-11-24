@@ -29,11 +29,12 @@ why would you use any other language
   - hungarian
   - tarjan
   - 2-sat
-- math
+- math & some random stuff
   - fft & ntt
     - includes fft + ntt + polynom multiply
   - fft that is unreadable and fast
     - unreadable, but fast ;)
+  - rdn
 - string
   - aho corasick
   - kmp
