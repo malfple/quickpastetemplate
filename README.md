@@ -17,6 +17,11 @@ why would you use any other language
   - hld
   - efficient segment tree
   - treap
+- dynamic programming
+  - convex hull trick
+  - dnc
+  - knuth yao
+  - sos
 - graph
   - dinic
   - mcmf - dinic style
@@ -26,5 +31,5 @@ why would you use any other language
 - string
   - aho corasick
   - kmp
-  - macher
+  - manacher
   - suffix array
