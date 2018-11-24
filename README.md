@@ -22,6 +22,7 @@ why would you use any other language
   - dnc
   - knuth yao
   - sos
+- geometry
 - graph
   - dinic
   - mcmf - dinic style
