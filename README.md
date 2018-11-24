@@ -32,6 +32,8 @@ why would you use any other language
 - math
   - fft & ntt
     - includes fft + ntt + polynom multiply
+  - fft that is unreadable and fast
+    - unreadable, but fast ;)
 - string
   - aho corasick
   - kmp
