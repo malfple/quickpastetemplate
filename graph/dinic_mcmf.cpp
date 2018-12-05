@@ -32,7 +32,7 @@ bool dijkstra(){
     FOR(i,N)potential[i] += dist[i]; //update potentials
 
     priority_queue<pii>pq;
-    memset(dist, -1, sizeof dist);
+    FOR(i,N)dist[i] = -OO;
     memset(level, 0, sizeof level);
 
     level[SRC] = 0;
@@ -48,7 +48,7 @@ bool dijkstra(){
         FOR(i,lst[now].size()){
             edge& e = lst[now][i];
             if(e.flow < e.cap){
-                if(dist[e.to] != -1 && dist[e.to] <= d+ccost(now, e))continue;
+                if(dist[e.to] != -OO && dist[e.to] <= d+ccost(now, e))continue;
                 dist[e.to] = d+ccost(now, e);
                 level[e.to] = max(level[e.to], level[now]+1);
                 // epar[e.to] = e.rev;
@@ -56,7 +56,7 @@ bool dijkstra(){
             }
         }
     }
-    return dist[SINK] != -1;
+    return dist[SINK] != -OO;
 }
 
 // dfs pretty much the same as dinic's + some lines
