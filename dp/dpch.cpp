@@ -6,7 +6,7 @@ Make sure gradient (m[i]) is either non-increasing if min,
  */
 
 int y[N], m[N];
-// while this is true, pop back from dq
+// while this is true, pop back from dq. a=new line, b=last, c=2nd last
 bool cekx(int a, int b, int c){
     // if not enough, change to cross mul
     // if cross mul, beware of negative denominator, and overflow
