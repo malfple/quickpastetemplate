@@ -1,3 +1,36 @@
+
+// HLD style
+// need sz[N] (size of subtree), etc, initialize with dfs
+// in this example, cnt[i] = number of vertices with color i
+int cnt[N];
+int add(int now, int par, int exx, int v){ // exclude exx and its subtree
+    cnt[c[now]] += v;
+    FOR(i,lst[now].size()){
+        int to = lst[now][i];
+        if(to == par || to == exx)continue;
+        add(to, now, exx, v);
+    }
+}
+void dfs(int now, int par, bool keep){
+    int big = -1;
+    FOR(i,lst[now].size()){
+        int to = lst[now][i];
+        if(to == par)continue;
+        if(big == -1 || sz[big] < sz[to])big = to;
+    }
+    FOR(i,lst[now].size()){
+        int to = lst[now][i];
+        if(to == par || to == big)continue;
+        dfs(to, now, 0);
+    }
+    if(big != -1)dfs(big, now, 1);
+    add(now, par, big, 1);
+    // now cnt[i] = number of vectices in subtree of now with color i
+    if(!keep)add(now, par, -1, -1);
+}
+
+// Old deprecated style
+
 /*
 Snatched from: spoj LISTREE
 Given a tree, find longest LIS from all possible path
