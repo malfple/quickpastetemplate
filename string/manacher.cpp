@@ -6,6 +6,7 @@ lps[i] means the longest palindromic substring centered at i
 
 lps[0] = 0;
 lps[1] = 1;
+REP(i,2,2*str.size())lps[i] = 0;
 REP(i,2,2*str.size()){
     int l = i/2 - lps[i]/2;
     int r = (i-1)/2 + lps[i]/2;
