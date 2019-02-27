@@ -10,7 +10,7 @@ If there aren’t both xi and ¬xi in f, then f is satisfiable.
 ### 2-SAT
 f = (x1 ∨ y1) ∧ (x2 ∨ y2) ∧ ...  ∧ (xn ∨ yn)
 xi ∨ yi =  xi → yi =  yi → xi
-Create a graph with 2n vertices, for each i, make 2 directed edges from ¬xi to yi and from  yi to xi.
+Create a graph with 2n vertices, for each i, make 2 directed edges from ¬xi to yi and from ¬yi to xi.
 f is not satisfiable if both xi and ¬xi is in the same SCC(see Tarjan above).
 
 Note that for ⊕, you can convert it into the above equation.
