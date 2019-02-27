@@ -13,6 +13,7 @@ why would you use any other language
 - main.cpp
   - pragma, define, random, getnum, etc
 - data structures and decompositions
+  - li chao tree + the dynamic version
   - dsu on tree
   - hld
   - efficient segment tree
