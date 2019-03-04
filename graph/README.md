@@ -26,3 +26,15 @@ x ⊕ y = (x1 ∨ y1) ∧ (¬x1 ∨ ¬y1)
 ### Backtracking
 
 if  xi → ¬xi then xi has to be FALSE. This is valid for the opposite. This is also why if they are in the same SCC, a contradiction occurs. To assign values to xi, you can use topological sort. Anything that comes earlier has to be FALSE. In the above implementation, you can use scc[i] (see NOTE).
+
+Sometimes you can just if(scc[i] > scc[-i]) i = false, else i = true
+
+if in doubt:
+
+You need to record the members of each scc as an addition to the tarjan implementation above.
+```
+iterate i = sccid..1:
+if scc[i] doesn’t have value, set to false
+set the negation of the members of scc[i] to their respective value. The scc that they’re in, now have a value.
+if scc[i] has value true, all of its children has to be true
+```
