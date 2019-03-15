@@ -64,4 +64,4 @@ struct DynamicLiChao{
     ll query(int x){
         return query(x, head, 1, M);
     }
-}
+};
