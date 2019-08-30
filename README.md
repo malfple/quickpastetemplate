@@ -12,6 +12,8 @@ why would you use any other language
 
 - main.cpp
   - pragma, define, random, getnum, etc
+- ultimateFastPointerGuide.cpp
+  - take a guess!
 - data structures and decompositions
   - li chao tree + the dynamic version
   - dsu on tree
