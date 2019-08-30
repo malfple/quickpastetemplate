@@ -41,3 +41,4 @@ why would you use any other language
   - kmp
   - manacher
   - suffix array
+  - Z algorithm
