@@ -9,12 +9,18 @@ struct node{
     map<char, int> next;
 }st[2 * N];
 int pcntr, last;
+
 inline int alloc(int len=0, int link=-1){
     st[pcntr].len = len;
     st[pcntr].link = link;
     return pcntr++;
 }
-inline void sam_init(){ pcntr = 0; last = alloc(); }
+
+inline void sam_init(){
+    pcntr = 0;
+    last = alloc();
+}
+
 inline void sam_extend(char c){
     int now = alloc(st[last].len + 1);
     int p = last;
