@@ -29,12 +29,12 @@ inline void sam_extend(char c){
         p = st[p].link;
     }
     if(p == -1){
-        st[now].link = 0;
+        st[now].link = 0; // link to root
     }else{
         int q = st[p].next[c];
-        if(st[p].len + 1 == st[q].len){
+        if(st[p].len + 1 == st[q].len){ // direct connection
             st[now].link = q;
-        }else{
+        }else{ // indirect, need to clone
             int clone = alloc(st[p].len + 1, st[q].link);
             st[clone].next = st[q].next;
             while(p != -1 && st[p].next[c] == q){
