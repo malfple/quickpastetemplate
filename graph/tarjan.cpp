@@ -6,7 +6,8 @@ A node is an articulation point if:
     2. not root -> there exist a children c where low[c] >= disc[now].
         This means if this node is erased, the graph will split
     3. not root -> disc[c] == low[c]. This node cannot reach anything above.
-For Bridge -> find edge that connects 2 articulation points, beware of multiple edges
+For Bridge -> an edge from u to v (where disc[u] < disc[v]) is a bridge if low[v] > disc[u].
+    It means v cannot reach u from other edges.
 HELPFUL NOTE: scc[i] stores the id of the scc in a topological order,
     therefore, when using dp(or anything else that needs dfs), just iterate 1..sccid,
     which is already topologically ordered.
