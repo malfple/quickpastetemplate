@@ -26,7 +26,7 @@ void tarjan(int now){
     disc[now] = low[now] = ++id;
     stk.push(now);
     stkmember[now] = true;
-
+    
     FOR(i,lst[now].size()){
         int to = lst[now][i];
         if(disc[to] == -1){
@@ -36,17 +36,14 @@ void tarjan(int now){
             low[now] = min(low[now], disc[to]);
         }
     }
-
     //if root
     if(disc[now] == low[now]){
         sccid++;
-        while(stk.top() != now){
-            scc[stk.top()] = sccid;
-            stkmember[stk.top()] = false;
-            stk.pop();
+        while(1){
+            int cur = stk.top(); stk.pop();
+            scc[cur] = sccid;
+            stkmember[cur] = false;
+            if(cur == now)break;
         }
-        scc[now] = sccid;
-        stkmember[now] = false;
-        stk.pop();
     }
 }
