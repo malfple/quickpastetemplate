@@ -3,10 +3,8 @@ Similar to Dinic’s MaxFlow
 Special case:
     1. negative edge, do bellman-ford 1x to initialize potentials
     2. negative cycle, things get complicated. Generally, always use negative cycle until depleted.
-Often, dfs is not needed, and traditional backtrack is enough.
-    remove level[N], lastEdge[N], and use epar[N] that stores the index of the reverse edge
-    used to reach node during dijkstra.
-Might even be faster. LOL ;-)
+This implementation uses normal iterative backtracking.
+    Sometimes, a dfs similar to dinic’s can be used (don’t forget to maintain level[N] and lastEdge[N]).
  */
 
 struct edge{int to, flow, cap, cost, rev;};
@@ -18,10 +16,9 @@ void addEdge(int a, int b, int cap, int cost){
     lst[b].pb({a, 0, 0, -cost, sa}); // here cap=0, cannot make 2 way, have to call this function twice, because of cost
 }
 
-int level[N]; // to prevent infinite loop during dfs
 int potential[N];
 int dist[N];
-int lastEdge[N];
+int epar[N];
 
 int ccost(int now, edge& e){ // compute cost w/ potentials
     return e.cost + potential[now] - potential[e.to];
@@ -32,11 +29,9 @@ bool dijkstra(){
     FOR(i,N)potential[i] += dist[i]; //update potentials
 
     priority_queue<pii>pq;
-    FOR(i,N)dist[i] = -OO;
-    memset(level, 0, sizeof level);
+    FOR(i,N)dist[i] = OO;
 
-    level[SRC] = 0;
-    pq.push(mp(0, SRC));
+    pq.push({0, SRC});
     dist[SRC] = 0;
     while(!pq.empty()){
         int d = -pq.top().F;
@@ -48,36 +43,20 @@ bool dijkstra(){
         FOR(i,lst[now].size()){
             edge& e = lst[now][i];
             if(e.flow < e.cap){
-                if(dist[e.to] != -OO && dist[e.to] <= d+ccost(now, e))continue;
+                if(dist[e.to] != OO && dist[e.to] <= d+ccost(now, e))continue;
                 dist[e.to] = d+ccost(now, e);
-                level[e.to] = max(level[e.to], level[now]+1);
-                // epar[e.to] = e.rev;
-                pq.push(mp(-d-ccost(now, e), e.to));
+                epar[e.to] = e.rev;
+                pq.push({-d-ccost(now, e), e.to});
             }
         }
     }
-    return dist[SINK] != -OO;
-}
-
-// dfs pretty much the same as dinic's + some lines
-int dfs(int now, int flow){
-    // add this line inside for loop
-        if(level[e.to] < level[now])continue; //going back
-    // condition for level changed
-        if(dist[e.to] == dist[now] + ccost(now, e))
+    return dist[SINK] != OO;
 }
 
 int totalflow, totalcost;
 void MCMF(){
     totalflow = totalcost = 0;
     while(dijkstra()){
-        memset(lastEdge, 0, sizeof lastEdge);
-        int flow = dfs(SRC, OO);
-        totalflow += flow;
-        totalcost += flow * (dist[SINK] + potential[SINK]);
-    }
-}
-// traditional backtrack, put inside while(dijkstra()) loop
         int flow = OO;
         for(int p = SINK; p != SRC; p = lst[p][epar[p]].to){
             edge& e = lst[lst[p][epar[p]].to][lst[p][epar[p]].rev];
@@ -88,3 +67,7 @@ void MCMF(){
             lst[e.to][e.rev].flow += flow;
             e.flow -= flow;
         }
+        totalflow += flow;
+        totalcost += flow * (dist[SINK] + potential[SINK]);
+    }
+}
