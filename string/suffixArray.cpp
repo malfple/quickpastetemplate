@@ -37,13 +37,13 @@ void buildSA(){ // from str with length n
     FOR(i,n)sparse[0][i] = str[i];
     REP(i,1,H){
         FOR(j,n){
-            buffer[j] = mp(mp(sparse[i-1][j], 0), j);
+            buffer[j] = {{sparse[i-1][j], 0}, j};
             if(j+pow2[i-1] < n) // 2nd char inside bounds
                 buffer[j].F.S = sparse[i-1][j+pow2[i-1]];
         }
         radix(n);
 
-        pii prev = mp(-1, -1); int id = 0;
+        pii prev = {-1, -1}; int id = 0;
         FOR(j,n){
             if(buffer[j].F != prev){
                 prev = buffer[j].F;
