@@ -4,6 +4,55 @@ for storing size of subtree (cartesian tree),
 	This enables accessing Kth-key and num of keys less than K.
  */
 
+struct node{
+    int key; int v;
+    int pri;
+    node* l; node* r;
+    node(int key) : key(key), v(0), pri(rand()), l(NULL), r(NULL){}
+}*head;
+
+void split(node* now, int k, node*& a, node*& b){ // <=k, >k
+    if(!now){a = b = NULL;return;}
+    if(now->key <= k){
+        a = now;
+        split(now->r, k, a->r, b);
+    }else{
+        b = now;
+        split(now->l, k, a, b->l);
+    }
+    //pull(now);
+}
+
+node* join(node* a, node* b){
+    if(!a)return b; if(!b)return a;
+    if(a->pri < b->pri){
+        a->r = join(a->r, b);
+        //pull(a);
+        return a;
+    }
+    b->l = join(a, b->l);
+    //pull(b);
+    return b;
+}
+
+node* insert(int key){ // returns added node
+    node* tmp,* add = new node(key);
+    split(head, key, head, tmp);
+    head = join(join(head, add), tmp);
+    return add;
+}
+
+void erase(int key){
+    node* target,* tmp;
+    split(head, key, head, tmp);
+    split(head, key-1, head, target);
+    head = join(head, tmp);
+    if(target)delete target;
+}
+
+
+// class version
+
 template<typename __key, typename __val>
 class Treap{
 private:
