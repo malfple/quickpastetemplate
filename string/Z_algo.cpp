@@ -1,4 +1,4 @@
-// Z[i] = LCP of string Z[0..N] and Z[i..N]
+// Z[i] = LCP of string s[0..N] and s[i..N]
 
 l = r = 0;
 Z[0] = n;
