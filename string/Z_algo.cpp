@@ -1,7 +1,7 @@
 // Z[i] = LCP of string s[0..N] and s[i..N]
 
 l = r = 0;
-Z[0] = n;
+Z[0] = s.size();
 for(int i = 1; i < s.size(); i++) {
     if(i > r) { // over bound -> manual widen
         l = r = i;
