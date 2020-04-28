@@ -1,10 +1,11 @@
 /*
 For Strongly Connected Component
-For Articulation point, no need to use stack, but need an extra integer parameter par to avoid back edge.
+For Articulation point, no need to use stack, but need an extra integer parameter par
+    to avoid back edge (But beware of multiple edges).
 A node is an articulation point if:
     1. it’s root of dfs tree, and have at least 2 children
     2. not root -> there exist a children c where low[c] >= disc[now].
-        This means if this node is erased, the graph will split
+        This means if this node is erased, the graph will split.
     3. not root -> disc[c] == low[c]. This node cannot reach anything above.
 For Bridge -> an edge from u to v (where disc[u] < disc[v]) is a bridge if low[v] > disc[u].
     It means v cannot reach u from other edges.
