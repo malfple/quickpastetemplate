@@ -10,21 +10,19 @@ int SA[N]; // 1-based HUE
 pair<pii,int> buffer[N], copyy[N]; // 0 based, sorting
 int cnt[N];
 
-void radix(int sz){ // sorts 0..sz-1 on buffer
+inline void radix(int sz){ // sorts 0..sz-1 on buffer
     int pclear = 0;
-    FOR(i,n)copyy[i] = buffer[i];
     FOR(i,n){
         while(pclear <= buffer[i].F.S)cnt[pclear++] = 0;
         cnt[buffer[i].F.S]++;
     }
     REP(i,1,pclear-1)cnt[i] += cnt[i-1];
-    FORD(i,n) buffer[--cnt[copyy[i].F.S]] = copyy[i];
+    FORD(i,n) copyy[--cnt[buffer[i].F.S]] = buffer[i];
 
     pclear = 0;
-    FOR(i,n)copyy[i] = buffer[i];
     FOR(i,n){
-        while(pclear <= buffer[i].F.F)cnt[pclear++] = 0;
-        cnt[buffer[i].F.F]++;
+        while(pclear <= copyy[i].F.F)cnt[pclear++] = 0;
+        cnt[copyy[i].F.F]++;
     }
     REP(i,1,pclear-1)cnt[i] += cnt[i-1];
     FORD(i,n) buffer[--cnt[copyy[i].F.F]] = copyy[i];
