@@ -4,11 +4,13 @@ then call buildAutomaton() and searchStr(the searched string)
 to print occurrences -> iterate through patIdx, you get index patIdx[i], etc
  */
 
+const int A = 256; // alphabet size
+
 struct node{
-    node* next[256],* fail,* suflink;
+    node* next[A],* fail,* suflink;
     int id;
     node() : fail(NULL), suflink(NULL), id(-1){
-        FOR(i,256)next[i] = NULL;
+        FOR(i,A)next[i] = NULL;
     }
 }head;
 
@@ -36,7 +38,7 @@ void buildAutomaton(){
     while(!q.empty()){
         node* now = q.front();
         q.pop();
-        FOR(i,256){
+        FOR(i,A){
             if(!now->next[i])continue;
             node* nt = now->next[i];
             nt->fail = now->fail;
