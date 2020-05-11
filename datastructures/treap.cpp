@@ -1,7 +1,9 @@
 /*
 for storing size of subtree (cartesian tree),
-	the time to pull up the size provided as comments.
-	This enables accessing Kth-key and num of keys less than K.
+    just add another variable (sz, remove key) to each node.
+    The time to pull up (update) the size provided as comments.
+    This enables accessing Kth-key and num of keys less than K.
+Other query/update/propagation techniques can be used as well.
  */
 
 struct node{
