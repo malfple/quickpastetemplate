@@ -51,3 +51,25 @@ void vector_multiply(vector<Cld>& res, vector<Cld>& a, vector<Cld>& b){ // multi
     FOR(i,n)res.pb(a[i] * b[i]);
     FFT(res, -1);
 }
+
+// finding primite_root, with MOD as prime modulo
+int primitive_root () {
+    vector<int> fact;
+    int phi = MOD-1,  n = phi;
+    for (int i=2; i*i<=n; ++i)
+        if (n % i == 0) {
+            fact.push_back (i);
+            while (n % i == 0)
+                n /= i;
+        }
+    if (n > 1)
+        fact.push_back (n);
+
+    for (int res=2; res<=MOD; ++res) {
+        bool ok = true;
+        for (size_t i=0; i<fact.size() && ok; ++i)
+            ok &= expmod (res, phi / fact[i]) != 1;
+        if (ok)  return res;
+    }
+    return -1;
+}
