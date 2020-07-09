@@ -54,5 +54,5 @@ int query(int a,int b){
     }
     if(depth[a] > depth[b])swap(a,b);
     //if(a != b) query anything in nodeToSeg[a]+1..nodeToSeg[b]
-    return b; //b is lca
+    return a; //a is lca
 }
