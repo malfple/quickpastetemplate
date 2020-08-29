@@ -86,7 +86,7 @@ void insert_key(node*& now, node* ins){
     prop(now);
     if(!now)now = ins;
     else if(ins->pri > now->pri){
-        split_key(now, k, ins->l, ins->r), now = ins;
+        split_key(now, ins->key, ins->l, ins->r), now = ins;
     }else{
         insert_key(ins->key < now->key ? now->l : now->r, ins);
     }

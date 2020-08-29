@@ -30,15 +30,15 @@ inline void prop(node* now){
 }
 
 // current function: dynamic array. See comments for bbst
-void split_idx(node* now, int k, node*& a, node*& b){ // <=k, >k
+void split(node* now, int k, node*& a, node*& b){ // <=k, >k
     if(!now){a = b = NULL;return;}
     prop(now);
     if(getsize(now->l) + 1 <= k){ // now->key <= k
         a = now;
-        split_idx(now->r, k-getsize(now->l)-1, a->r, b); // (now->r, k, a->r, b)
+        split(now->r, k-getsize(now->l)-1, a->r, b); // (now->r, k, a->r, b)
     }else{
         b = now;
-        split_idx(now->l, k, a, b->l);
+        split(now->l, k, a, b->l);
     }
     update(now);
 }
@@ -65,7 +65,7 @@ void insert(node*& now, int k, node* ins){ // (now, ins) no need k
     prop(now);
     if(!now)now = ins;
     else if(ins->pri > now->pri){
-        split_idx(now, k, ins->l, ins->r), now = ins; // by index => by key
+        split(now, k, ins->l, ins->r), now = ins; // by index => by key
     }else{
         int sl = getsize(now->l); // no need sl
         // (ins->key < now->key ? now->l : now->r, ins)
