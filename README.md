@@ -10,6 +10,8 @@ why would you use any other language
 
 ## Index
 
+files suffixed with `_nb` is for notebook (i.e. shorter)
+
 - main.cpp
   - pragma, define, random, getnum, etc
 - ultimateFastPointerGuide.cpp
