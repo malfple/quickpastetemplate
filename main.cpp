@@ -28,6 +28,8 @@ typedef vector<pll> vll;
 #define FOR(i,a) for(int i=0; i<a; i++)
 #define FORD(i,a) for(int i=(int)a-1; i>=0; i--)
 
+#define ALL(v) v.begin(), v.end()
+
 #define pb push_back
 #define F first
 #define S second
