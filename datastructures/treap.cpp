@@ -67,7 +67,7 @@ void insert(node*& now, int k, node* ins){ // (now, ins) no need k
     update(now);
 }
 // if erase key, have to check if key exists; if(!now)
-void erase(node*& now, int k){
+void erase(node*& now, int k){ // 1<=k<=size
     int sl = getsize(now->l); // no need sl
     if(sl+1 == k){ // now->key == k
         node* t = join(now->l, now->r);
