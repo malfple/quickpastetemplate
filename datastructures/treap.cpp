@@ -58,7 +58,7 @@ node* join(node* a, node* b){
 void insert(node*& now, int k, node* ins){ // (now, ins) no need k
     if(!now)now = ins;
     else if(ins->pri > now->pri){
-        split_key(now, ins->key, ins->l, ins->r), now = ins;
+        split(now, k, ins->l, ins->r), now = ins; // by index => by key
     }else{
         int sl = getsize(now->l); // no need sl
         // (ins->key < now->key ? now->l : now->r, ins)
