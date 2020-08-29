@@ -50,27 +50,34 @@ node* join(node* a, node* b){
     return b;
 }
 
-/*
-quick insert:
-    if now null
-        now = new node
-    if current node has higher priority than new node
-        descent the tree like usual
-    else
-        split -> assign as children to new node
-    update(now)
+// quick insert and delete
+// the slow variant = just split everything lmao
+// current function: dynamic array. see comments for bbst
 
-quick erase:
-    if now null
-        well, do nothing
-    if found
-        join the deleted node's children
-    else
-        descent the tree like usual
-    update(now)
-
-the slow variant = just split everything lmao
-*/
+// insert after node k. so 0<=k<=size
+void insert(node*& now, int k, node* ins){ // (now, ins) no need k
+    if(!now)now = ins;
+    else if(ins->pri > now->pri){
+        split_key(now, ins->key, ins->l, ins->r), now = ins;
+    }else{
+        int sl = getsize(now->l); // no need sl
+        // (ins->key < now->key ? now->l : now->r, ins)
+        insert(k < sl+1 ? now->l : now->r, k < sl+1 ? k : k-sl-1, ins);
+    }
+    update(now);
+}
+// if erase key, have to check if key exists; if(!now)
+void erase(node*& now, int k){
+    int sl = getsize(now->l); // no need sl
+    if(sl+1 == k){ // now->key == k
+        node* t = join(now->l, now->r);
+        delete now; now = t;
+    }else{
+        // (k < now->key ? now->l : now->r, k)
+        erase(k < sl+1 ? now->l : now->r, k < sl+1 ? k : k-sl-1);
+    }
+    update(now);
+}
 
 
 // class version
