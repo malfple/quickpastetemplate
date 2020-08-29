@@ -15,6 +15,7 @@ why would you use any other language
 - ultimateFastPointerGuide.cpp
   - take a guess!
 - data structures and decompositions
+  - BIT/fenwick tree
   - li chao tree + the dynamic version
   - dsu on tree
   - hld
