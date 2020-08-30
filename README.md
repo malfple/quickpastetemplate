@@ -36,6 +36,8 @@ files suffixed with `_nb` is for notebook (i.e. shorter)
   - tarjan
   - 2-sat
 - math & some random stuff
+  - modular
+    - modular struct and some additional stuff
   - fft & ntt
     - includes fft + ntt + polynom multiply
   - fft that is unreadable and fast
