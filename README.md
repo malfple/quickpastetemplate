@@ -37,7 +37,7 @@ files suffixed with `_nb` is for notebook (i.e. shorter)
   - 2-sat
 - math & some random stuff
   - modular
-    - modular struct and some additional stuff
+    - basic modular arithmetics
   - fft & ntt
     - includes fft + ntt + polynom multiply
   - fft that is unreadable and fast
