@@ -21,6 +21,7 @@ files suffixed with `_nb` is for notebook (i.e. shorter)
   - li chao tree + the dynamic version
   - dsu on tree
   - hld
+  - segment tree (just a template)
   - efficient segment tree
   - treap
 - dynamic programming
